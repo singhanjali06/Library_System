@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+📚 Library System 
 
-## Getting Started
+This is the backend for a Library Management System built as part of a technical assignment.
+It provides REST APIs for managing books with JWT authentication and role-based access control.
 
-First, run the development server:
+🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Node.js
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Express.js
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+MongoDB (Atlas)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Mongoose
 
-## Learn More
+JWT Authentication
 
-To learn more about Next.js, take a look at the following resources:
+bcryptjs
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📂 Project Structure
+backend/
+│── index.js
+│── config.env          
+│── models/
+│   ├── User.js
+│   └── Book.js
+│── routes/
+│   ├── authRoute.js
+│   └── bookRoute.js
+│── middleware/
+│   └── auth.js
+│── package.json
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🔐 Features
 
-## Deploy on Vercel
+User Registration & Login
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+JWT-based Authentication
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Role-based Access (Admin / User)
+
+Admin-only Book Create & Update APIs
+
+MongoDB Atlas integration
+
+Centralized middleware structure
+
+📘 Book Schema
+{
+  "title": "Atomic Habits",
+  "author": "James Clear",
+  "category": "Self Help",
+  "available": true
+}
+
+🧑‍💻 API Endpoints
+🔑 Authentication
+
+POST /api/auth/register – Register a new user
+
+POST /api/auth/login – Login & receive JWT token
+
+📚 Books
+
+GET /api/books – Get all books (Public)
+
+GET /api/books/:id – Get book by ID (Public)
+
+POST /api/books – Add a book (Admin only)
+
+PUT /api/books/:id – Update a book (Admin only)
+
+Admin routes require JWT token in header:
+
+Authorization: Bearer <token>
+
+⚙️ Environment Variables
+
+Create a config.env file in the backend root:
+
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+PORT=5000
+
+
+config.env is ignored using .gitignore for security.
+
+▶️ Run Locally
+npm install
+node index.js
+
+
+Server will run on:
+
+http://localhost:5000
+
+📝 Notes
+
+This project focuses on backend architecture, authentication, and API design
+
+Suitable for extension with frontend (Next.js / React)
+
+👤 Author
+
+Anjali Singh
